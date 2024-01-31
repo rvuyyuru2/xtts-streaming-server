@@ -18,6 +18,7 @@ RUN mkdir -p /app/tts_models
 
 #Mark this 1 if you have older card
 ENV NVIDIA_DISABLE_REQUIRE=0
+ENV COQUI_TOS_AGREED=1 
 
 
 EXPOSE 8020
