@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel
+FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-devel
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
@@ -14,8 +14,11 @@ RUN python -m unidic download
 RUN mkdir -p /app/tts_models
 
 COPY main.py .
-ENV NVIDIA_DISABLE_REQUIRE=1
 
-ENV NUM_THREADS=2
-EXPOSE 80
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+#Mark this 1 if you have older card
+ENV NVIDIA_DISABLE_REQUIRE=0
+
+
+EXPOSE 8020
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8020"]

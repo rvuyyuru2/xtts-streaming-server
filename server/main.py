@@ -183,3 +183,5 @@ def get_speakers():
 @app.get("/languages")
 def get_languages():
     return config.languages
+
+
