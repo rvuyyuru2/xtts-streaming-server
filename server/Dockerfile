@@ -10,7 +10,7 @@ COPY . /app
 WORKDIR /app
 RUN python -m pip install --use-deprecated=legacy-resolver -r requirements.txt \
     && python -m pip cache purge
-
+RUN ls
 RUN python -m unidic download
 RUN mkdir -p /app/tts_models
 
