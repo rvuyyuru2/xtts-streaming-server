@@ -4,9 +4,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install --no-install-recommends -y sox libsox-fmt-all curl wget gcc git git-lfs build-essential libaio-dev libsndfile1 ssh ffmpeg && \
     apt-get clean && apt-get -y autoremove
-COPY . app
-WORKDIR /app
 
+
+COPY . /app
+WORKDIR /app
 RUN python -m pip install --use-deprecated=legacy-resolver -r requirements.txt \
     && python -m pip cache purge
 
